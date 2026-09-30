@@ -1,0 +1,2340 @@
+{
+    "type": "FeatureCollection",
+    "name": "PointFast",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:EPSG::2154"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 1,
+                "pk": 1,
+                "idSection": 1,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297900
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 2,
+                "pk": 2,
+                "idSection": 1,
+                "x": 10.416666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297901
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.416666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 3,
+                "pk": 3,
+                "idSection": 1,
+                "x": 20.833333333333332,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297902
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    20.833333333333332,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 4,
+                "pk": 4,
+                "idSection": 1,
+                "x": 31.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297903
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    31.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 5,
+                "pk": 5,
+                "idSection": 1,
+                "x": 41.666666666666664,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297904
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    41.666666666666664,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 6,
+                "pk": 6,
+                "idSection": 1,
+                "x": 52.08333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297905
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    52.08333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 7,
+                "pk": 7,
+                "idSection": 1,
+                "x": 62.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297906
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    62.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 8,
+                "pk": 8,
+                "idSection": 1,
+                "x": 72.91666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297907
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    72.91666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 9,
+                "pk": 9,
+                "idSection": 1,
+                "x": 83.33333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297908
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    83.33333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 10,
+                "pk": 10,
+                "idSection": 1,
+                "x": 93.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297909
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    93.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 11,
+                "pk": 11,
+                "idSection": 1,
+                "x": 104.16666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297910
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    104.16666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 12,
+                "pk": 12,
+                "idSection": 1,
+                "x": 114.58333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297911
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    114.58333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 13,
+                "pk": 13,
+                "idSection": 1,
+                "x": 125.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297912
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    125.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 14,
+                "pk": 14,
+                "idSection": 1,
+                "x": 135.41666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297913
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    135.41666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 15,
+                "pk": 15,
+                "idSection": 1,
+                "x": 145.83333333333331,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297914
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.83333333333331,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 16,
+                "pk": 16,
+                "idSection": 1,
+                "x": 156.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297915
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    156.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 17,
+                "pk": 17,
+                "idSection": 1,
+                "x": 166.66666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297916
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    166.66666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 18,
+                "pk": 18,
+                "idSection": 1,
+                "x": 177.08333333333331,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297917
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    177.08333333333331,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 19,
+                "pk": 19,
+                "idSection": 1,
+                "x": 187.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297918
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    187.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 20,
+                "pk": 20,
+                "idSection": 1,
+                "x": 197.91666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297919
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    197.91666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 21,
+                "pk": 21,
+                "idSection": 1,
+                "x": 208.33333333333331,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297920
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    208.33333333333331,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 22,
+                "pk": 22,
+                "idSection": 1,
+                "x": 218.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297921
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    218.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 23,
+                "pk": 23,
+                "idSection": 1,
+                "x": 229.16666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297922
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    229.16666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 24,
+                "pk": 24,
+                "idSection": 1,
+                "x": 239.58333333333331,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297923
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    239.58333333333331,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 25,
+                "pk": 25,
+                "idSection": 1,
+                "x": 250.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297924
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    250.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 26,
+                "pk": 26,
+                "idSection": 1,
+                "x": 260.41666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297925
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    260.41666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 27,
+                "pk": 27,
+                "idSection": 1,
+                "x": 270.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297926
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    270.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 28,
+                "pk": 28,
+                "idSection": 1,
+                "x": 281.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297927
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    281.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 29,
+                "pk": 29,
+                "idSection": 1,
+                "x": 291.66666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297928
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    291.66666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 30,
+                "pk": 30,
+                "idSection": 1,
+                "x": 302.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297929
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    302.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 31,
+                "pk": 31,
+                "idSection": 1,
+                "x": 312.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297930
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    312.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 32,
+                "pk": 32,
+                "idSection": 1,
+                "x": 322.91666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297931
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    322.91666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 33,
+                "pk": 33,
+                "idSection": 1,
+                "x": 333.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297932
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    333.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 34,
+                "pk": 34,
+                "idSection": 1,
+                "x": 343.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297933
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    343.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 35,
+                "pk": 35,
+                "idSection": 1,
+                "x": 354.16666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297934
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    354.16666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 36,
+                "pk": 36,
+                "idSection": 1,
+                "x": 364.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297935
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    364.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 37,
+                "pk": 37,
+                "idSection": 1,
+                "x": 375.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297936
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    375.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 38,
+                "pk": 38,
+                "idSection": 1,
+                "x": 385.41666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297937
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    385.41666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 39,
+                "pk": 39,
+                "idSection": 1,
+                "x": 395.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297938
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    395.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 40,
+                "pk": 40,
+                "idSection": 1,
+                "x": 406.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297939
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    406.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 41,
+                "pk": 41,
+                "idSection": 1,
+                "x": 416.66666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297940
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    416.66666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 42,
+                "pk": 42,
+                "idSection": 1,
+                "x": 427.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297941
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    427.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 43,
+                "pk": 43,
+                "idSection": 1,
+                "x": 437.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297942
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    437.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 44,
+                "pk": 44,
+                "idSection": 1,
+                "x": 447.91666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297943
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    447.91666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 45,
+                "pk": 45,
+                "idSection": 1,
+                "x": 458.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297944
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    458.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 46,
+                "pk": 46,
+                "idSection": 1,
+                "x": 468.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297945
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    468.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 47,
+                "pk": 47,
+                "idSection": 1,
+                "x": 479.16666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297946
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    479.16666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 48,
+                "pk": 48,
+                "idSection": 1,
+                "x": 489.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297947
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    489.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 49,
+                "pk": 49,
+                "idSection": 1,
+                "x": 500.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297948
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    500.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 50,
+                "pk": 50,
+                "idSection": 1,
+                "x": 510.41666666666663,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297949
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    510.41666666666663,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 51,
+                "pk": 51,
+                "idSection": 1,
+                "x": 520.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297950
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    520.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 52,
+                "pk": 52,
+                "idSection": 1,
+                "x": 531.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297951
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    531.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 53,
+                "pk": 53,
+                "idSection": 1,
+                "x": 541.6666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297952
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    541.6666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 54,
+                "pk": 54,
+                "idSection": 1,
+                "x": 552.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297953
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    552.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 55,
+                "pk": 55,
+                "idSection": 1,
+                "x": 562.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297954
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    562.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 56,
+                "pk": 56,
+                "idSection": 1,
+                "x": 572.9166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297955
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    572.9166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 57,
+                "pk": 57,
+                "idSection": 1,
+                "x": 583.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297956
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    583.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 58,
+                "pk": 58,
+                "idSection": 1,
+                "x": 593.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297957
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    593.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 59,
+                "pk": 59,
+                "idSection": 1,
+                "x": 604.1666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297958
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    604.1666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 60,
+                "pk": 60,
+                "idSection": 1,
+                "x": 614.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297959
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    614.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 61,
+                "pk": 61,
+                "idSection": 1,
+                "x": 625.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297960
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    625.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 62,
+                "pk": 62,
+                "idSection": 1,
+                "x": 635.4166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297961
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    635.4166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 63,
+                "pk": 63,
+                "idSection": 1,
+                "x": 645.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297962
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    645.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 64,
+                "pk": 64,
+                "idSection": 1,
+                "x": 656.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297963
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    656.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 65,
+                "pk": 65,
+                "idSection": 1,
+                "x": 666.6666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297964
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    666.6666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 66,
+                "pk": 66,
+                "idSection": 1,
+                "x": 677.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297965
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    677.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 67,
+                "pk": 67,
+                "idSection": 1,
+                "x": 687.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297966
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    687.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 68,
+                "pk": 68,
+                "idSection": 1,
+                "x": 697.9166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297967
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    697.9166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 69,
+                "pk": 69,
+                "idSection": 1,
+                "x": 708.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297968
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    708.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 70,
+                "pk": 70,
+                "idSection": 1,
+                "x": 718.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297969
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    718.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 71,
+                "pk": 71,
+                "idSection": 1,
+                "x": 729.1666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297970
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    729.1666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 72,
+                "pk": 72,
+                "idSection": 1,
+                "x": 739.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297971
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    739.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 73,
+                "pk": 73,
+                "idSection": 1,
+                "x": 750.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297972
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    750.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 74,
+                "pk": 74,
+                "idSection": 1,
+                "x": 760.4166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297973
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    760.4166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 75,
+                "pk": 75,
+                "idSection": 1,
+                "x": 770.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297974
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    770.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 76,
+                "pk": 76,
+                "idSection": 1,
+                "x": 781.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297975
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    781.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 77,
+                "pk": 77,
+                "idSection": 1,
+                "x": 791.6666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297976
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    791.6666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 78,
+                "pk": 78,
+                "idSection": 1,
+                "x": 802.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297977
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    802.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 79,
+                "pk": 79,
+                "idSection": 1,
+                "x": 812.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297978
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    812.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 80,
+                "pk": 80,
+                "idSection": 1,
+                "x": 822.9166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297979
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    822.9166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 81,
+                "pk": 81,
+                "idSection": 1,
+                "x": 833.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297980
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    833.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 82,
+                "pk": 82,
+                "idSection": 1,
+                "x": 843.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297981
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    843.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 83,
+                "pk": 83,
+                "idSection": 1,
+                "x": 854.1666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297982
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    854.1666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 84,
+                "pk": 84,
+                "idSection": 1,
+                "x": 864.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297983
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    864.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 85,
+                "pk": 85,
+                "idSection": 1,
+                "x": 875.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297984
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    875.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 86,
+                "pk": 86,
+                "idSection": 1,
+                "x": 885.4166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297985
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    885.4166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 87,
+                "pk": 87,
+                "idSection": 1,
+                "x": 895.8333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297986
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    895.8333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 88,
+                "pk": 88,
+                "idSection": 1,
+                "x": 906.25,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297987
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    906.25,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 89,
+                "pk": 89,
+                "idSection": 1,
+                "x": 916.6666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297988
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    916.6666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 90,
+                "pk": 90,
+                "idSection": 1,
+                "x": 927.0833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297989
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    927.0833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 91,
+                "pk": 91,
+                "idSection": 1,
+                "x": 937.5,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297990
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    937.5,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 92,
+                "pk": 92,
+                "idSection": 1,
+                "x": 947.9166666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297991
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    947.9166666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 93,
+                "pk": 93,
+                "idSection": 1,
+                "x": 958.3333333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297992
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    958.3333333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 94,
+                "pk": 94,
+                "idSection": 1,
+                "x": 968.75,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297993
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    968.75,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 95,
+                "pk": 95,
+                "idSection": 1,
+                "x": 979.1666666666666,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297994
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    979.1666666666666,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 96,
+                "pk": 96,
+                "idSection": 1,
+                "x": 989.5833333333333,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297995
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    989.5833333333333,
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "field_1": 97,
+                "pk": 97,
+                "idSection": 1,
+                "x": 1000.0,
+                "y": 0.0,
+                "z": 0.0,
+                "angle": 0,
+                "train_id": 1,
+                "speed": 300.0,
+                "train_set": "TGVSE-10U2",
+                "timestep": 1734297996
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    1000.0,
+                    0.0,
+                    0.0
+                ]
+            }
+        }
+    ]
+}
