@@ -27,6 +27,9 @@ import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Enrich_Landcover_
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Screen_to_building
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Set_Height
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Export_Table
+import org.noise_planet.noisemodelling.scripts.Geometric_Tools.TrainRailwayPosition
+import org.noise_planet.noisemodelling.scripts.Dynamic.Train.*
+import org.noise_planet.noisemodelling.scripts.NoiseModelling.Noise_level_from_train_source
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_Asc_File
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_File
 import org.slf4j.Logger
@@ -234,10 +237,18 @@ class TestGeometricTools extends JdbcTestCase {
     @Test
     void testEnrichLandcoverRail() {
         new Import_File().exec(connection,
-                ["pathFile" : TestGeometricTools.getResource("Platform/receiver.geojson").getPath(),
+                ["pathFile" :  TestDatabaseManager.getResource("Platform/testBati.geojson").getPath() ,
+                 "inputSRID": 2154,
+                 "tableName": "BUILDINGS"])
+        new Import_File().exec(connection,
+                ["pathFile" : TestGeometricTools.getResource("Platform/testReceiver.geojson").getPath(),
                  "inputSRID": 2154,
                  "tableName": "RECEIVER"])
 
+        new Import_File().exec(connection, [
+                pathFile: TestDynamic.getResource("Platform/vehiculeInterpolation.geojson").getPath(),
+                "inputSRID": 2154,
+                "tableName": "vehicle"])
         new Import_File().exec(connection,
                 ["pathFile" : TestGeometricTools.getResource("Platform/testPlatform1.geojson").getPath(),
                  "inputSRID": 2154,
@@ -252,6 +263,46 @@ class TestGeometricTools extends JdbcTestCase {
                 ["inputLandcover" : "LANDCOVER",
                  "inputRail" : "RAIL",
                  "outputSuffixe":"AFTER_RAIL"
+                ])
+
+//        new TrainRailwayPosition().exec(connection, [
+//                railwayGeom: [[0.0, 0.0, 0.0],[1000.0, 0.0, 0.0]],
+//                fieldTrainset: "TGVSE-10U2",
+//                speedSet: 300,
+//                idSection: 1,
+//                integrationTimeSet: 0.125,
+//                timeStartSet: 1734297900,
+//                nameFile: "vehiculeInterpolation",
+//        ])
+
+        // Create a table with the noise level from the vehicles and snap the vehicles to the discretized network
+        new TrainSourcesFromPosition().exec(connection, [
+                trainsPosition       : "vehicle",
+                railwayGeometries    : "RAIL",
+                fieldTrainset        : "train_set",
+                fieldTrainId         : "train_id",
+                fieldTimeStep        : "timestep",
+                trainTrainsetData    : "RailwayTrainsets.json",
+                trainVehicleData     : "RailwayVehiclesCnossos.json",
+                trainCoefficientsData: "RailwayEmissionCnossos.json"
+        ])
+
+        // Compute the attenuation noise level from the network sources (SOURCES_0DB) to the receivers
+        new Noise_level_from_train_source().exec(connection,
+                ["tableBuilding"                  : "BUILDINGS",
+                 "tableSources"                   : "SOURCES_GEOM",
+                 "tableSourcesEmission"           : "SOURCES_EMISSION",
+                 "selectSource"                   : "ALL",
+                 "tableReceivers"                 : "RECEIVER",
+                 "maxError"                       : 0.0,
+                 "confFavorableOccurrencesDefault": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0",
+                 "confTemperature"                : 20,
+                 "confMaxSrcDist"                 : 1000,
+                 "confReflOrder"                  : 0,
+                 "paramWallAlpha"                 : 1,
+                 "confDiffHorizontal"             : false,
+                 "confDiffVertical"               : false,
+                 "confExportSourceId"             : false
                 ])
 
     }
