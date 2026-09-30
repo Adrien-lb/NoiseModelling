@@ -13,7 +13,9 @@
 package org.noise_planet.noisemodelling.scripts
 
 import groovy.sql.Sql
+import org.h2.value.ValueBoolean
 import org.h2gis.functions.io.shp.SHPRead
+import org.h2gis.functions.io.shp.SHPWrite
 import org.h2gis.utilities.GeometryTableUtilities
 import org.h2gis.utilities.JDBCUtilities
 import org.h2gis.utilities.TableLocation
@@ -259,33 +261,42 @@ class TestGeometricTools extends JdbcTestCase {
                  "inputSRID": 2154,
                  "tableName": "LANDCOVER"])
 
+        new Import_File().exec(connection,
+                ["pathFile" : TestGeometricTools.getResource("Platform/vehiculeInterpolation.geojson").getPath(),
+                 "inputSRID": 2154,
+                 "tableName": "vehiculeInterpolation"])
+
         new Enrich_Landcover_with_rail().exec(connection,
                 ["inputLandcover" : "LANDCOVER",
                  "inputRail" : "RAIL",
                  "outputSuffixe":"AFTER_RAIL"
                 ])
 
-        new TrainRailwayPosition().exec(connection, [
-                railwayGeom: [[0.0, 0.0, 0.0],[1000.0, 0.0, 0.0]],
-                fieldTrainset: "TGVSE-10U2",
-                speedSet: 300,
-                idSection: 1,
-                integrationTimeSet: 0.125,
-                timeStartSet: 1734297900,
-                nameFile: "vehiculeInterpolation",
-        ])
+        new Export_Table().exec(connection,
+                [exportPath: new File("src/test/resources/org/noise_planet/noisemodelling/scripts/Platform/LANDCOVERNEW.shp").absolutePath,
+                 tableToExport: "LANDCOVER_AFTER_RAIL"])
 
-        // Create a table with the noise level from the vehicles and snap the vehicles to the discretized network
-        new TrainSourcesFromPosition().exec(connection, [
-                trainsPosition       : "vehicle",
-                railwayGeometries    : "RAIL",
-                fieldTrainset        : "train_set",
-                fieldTrainId         : "train_id",
-                fieldTimeStep        : "timestep",
-                trainTrainsetData    : "RailwayTrainsets.json",
-                trainVehicleData     : "RailwayVehiclesCnossos.json",
-                trainCoefficientsData: "RailwayEmissionCnossos.json"
-        ])
+//        new TrainRailwayPosition().exec(connection, [
+//                railwayGeom: [[0.0, 0.0, 0.0],[1000.0, 0.0, 0.0]],
+//                fieldTrainset: "TGVSE-10U2",
+//                speedSet: 300,
+//                idSection: 1,
+//                integrationTimeSet: 0.125,
+//                timeStartSet: 1734297900,
+//                nameFile: "vehiculeInterpolation",
+//        ])
+
+//        // Create a table with the noise level from the vehicles and snap the vehicles to the discretized network
+//        new TrainSourcesFromPosition().exec(connection, [
+//                trainsPosition       : "vehiculeInterpolation",
+//                railwayGeometries    : "RAIL",
+//                fieldTrainset        : "train_set",
+//                fieldTrainId         : "train_id",
+//                fieldTimeStep        : "timestep",
+//                trainTrainsetData    : "RailwayTrainsets.json",
+//                trainVehicleData     : "RailwayVehiclesCnossos.json",
+//                trainCoefficientsData: "RailwayEmissionCnossos.json"
+//        ])
 
         // Compute the attenuation noise level from the network sources (SOURCES_0DB) to the receivers
         new Noise_level_from_train_source().exec(connection,
@@ -294,6 +305,7 @@ class TestGeometricTools extends JdbcTestCase {
                  "tableSourcesEmission"           : "SOURCES_EMISSION",
                  "selectSource"                   : "ALL",
                  "tableReceivers"                 : "RECEIVER",
+                 "tableGroundAbs"                 : "LANDCOVER_AFTER_RAIL",
                  "maxError"                       : 0.0,
                  "confFavorableOccurrencesDefault": "0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0",
                  "confTemperature"                : 20,
@@ -304,6 +316,39 @@ class TestGeometricTools extends JdbcTestCase {
                  "confDiffVertical"               : false,
                  "confExportSourceId"             : false
                 ])
+
+//        new Export_Table().exec(connection,
+//                [exportPath: new File("src/test/resources/org/noise_planet/noisemodelling/scripts/Platform/receivers_level.shp").absolutePath,
+//                 tableToExport: "RECEIVERS_LEVEL"])
+
+        double[] dBA = [-30.2, -26.2, -22.5, -19.1, -16.1, -13.4, -10.9, -8.6, -6.6, -4.8,
+                        -3.2, -1.9, -0.8, 0, 0.6, 1, 1.2, 1.3, 1.2, 1, 0.5, -0.1, -1.1, -2.5]
+
+        def tiersOctaveFrequencies = [
+                50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000,
+                1250, 1600, 2000, 2500, 3150, 4000, 5000, 6300, 8000, 10000
+        ]
+        (0..23).each { n ->
+            try {
+                def freq = tiersOctaveFrequencies[n]
+                def queryRef = "SELECT (F${freq}HZ::DOUBLE) FROM MIC${i}"
+                def queryResult = "SELECT (HZ${freq}) FROM RECEIVERS_LEVEL WHERE IDRECEIVER=${i}"
+
+                def dataRef = sql.rows(queryRef.toString()).collect {
+                    it.values()[0] }
+                def dataResult = sql.rows(queryResult.toString()).collect {
+                    it.values()[0] + dBA[n]}
+                (0..<1439).each { id ->
+                    assertEquals(
+                            "Fail for MIC${i} at ${freq} Hz id ${id+1}",
+                            dataRef[id+1] as double, dataResult[id] as double,0.1
+                    )
+                }
+            } catch (Exception e) {
+                println "Error for MIC${i} at ${tiersOctaveFrequencies[n - 1]} Hz : ${e.message}"
+            }
+        }
+
 
     }
 
