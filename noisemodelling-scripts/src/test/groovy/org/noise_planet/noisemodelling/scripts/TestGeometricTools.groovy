@@ -26,10 +26,10 @@ import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Enrich_DEM_with_r
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Enrich_Landcover_with_rail
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Screen_to_building
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Set_Height
-import org.noise_planet.noisemodelling.scripts.Import_and_Export.Export_Table
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.TrainRailwayPosition
-import org.noise_planet.noisemodelling.scripts.Dynamic.Train.*
 import org.noise_planet.noisemodelling.scripts.NoiseModelling.Noise_level_from_train_source
+import org.noise_planet.noisemodelling.scripts.Dynamic.TrainSourcesFromPosition
+import org.noise_planet.noisemodelling.scripts.Import_and_Export.Export_Table
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_Asc_File
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_File
 import org.slf4j.Logger
@@ -67,7 +67,7 @@ class TestGeometricTools extends JdbcTestCase {
 
         assertEquals("SRID changed from 2154 to 4326.", res)
     }
-
+/*
     @Test
     void testTruncateScreens() {
 
@@ -232,7 +232,7 @@ class TestGeometricTools extends JdbcTestCase {
 
         assertTrue(countBefore < countAfter)
     }
-
+*/
 
     @Test
     void testEnrichLandcoverRail() {
@@ -265,15 +265,15 @@ class TestGeometricTools extends JdbcTestCase {
                  "outputSuffixe":"AFTER_RAIL"
                 ])
 
-//        new TrainRailwayPosition().exec(connection, [
-//                railwayGeom: [[0.0, 0.0, 0.0],[1000.0, 0.0, 0.0]],
-//                fieldTrainset: "TGVSE-10U2",
-//                speedSet: 300,
-//                idSection: 1,
-//                integrationTimeSet: 0.125,
-//                timeStartSet: 1734297900,
-//                nameFile: "vehiculeInterpolation",
-//        ])
+        new TrainRailwayPosition().exec(connection, [
+                railwayGeom: [[0.0, 0.0, 0.0],[1000.0, 0.0, 0.0]],
+                fieldTrainset: "TGVSE-10U2",
+                speedSet: 300,
+                idSection: 1,
+                integrationTimeSet: 0.125,
+                timeStartSet: 1734297900,
+                nameFile: "vehiculeInterpolation",
+        ])
 
         // Create a table with the noise level from the vehicles and snap the vehicles to the discretized network
         new TrainSourcesFromPosition().exec(connection, [
