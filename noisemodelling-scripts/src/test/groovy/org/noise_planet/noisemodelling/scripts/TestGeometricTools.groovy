@@ -17,12 +17,16 @@ import org.h2gis.functions.io.shp.SHPRead
 import org.h2gis.utilities.GeometryTableUtilities
 import org.h2gis.utilities.JDBCUtilities
 import org.h2gis.utilities.TableLocation
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test
+import org.noise_planet.noisemodelling.jdbc.railway.RailWayLWIterator
+import org.noise_planet.noisemodelling.jdbc.railway.RailwayPlatform;
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Change_SRID
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Clean_Buildings_Table
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Enrich_DEM_with_road
+import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Enrich_Landcover_with_rail
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Screen_to_building
 import org.noise_planet.noisemodelling.scripts.Geometric_Tools.Set_Height
+import org.noise_planet.noisemodelling.scripts.Import_and_Export.Export_Table
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_Asc_File
 import org.noise_planet.noisemodelling.scripts.Import_and_Export.Import_File
 import org.slf4j.Logger
@@ -60,8 +64,6 @@ class TestGeometricTools extends JdbcTestCase {
 
         assertEquals("SRID changed from 2154 to 4326.", res)
     }
-
-
 
     @Test
     void testTruncateScreens() {
@@ -227,4 +229,32 @@ class TestGeometricTools extends JdbcTestCase {
 
         assertTrue(countBefore < countAfter)
     }
+
+
+    @Test
+    void testEnrichLandcoverRail() {
+        new Import_File().exec(connection,
+                ["pathFile" : TestGeometricTools.getResource("Platform/receiver.geojson").getPath(),
+                 "inputSRID": 2154,
+                 "tableName": "RECEIVER"])
+
+        new Import_File().exec(connection,
+                ["pathFile" : TestGeometricTools.getResource("Platform/testPlatform1.geojson").getPath(),
+                 "inputSRID": 2154,
+                 "tableName": "RAIL"])
+
+        new Import_File().exec(connection,
+                ["pathFile" : TestGeometricTools.getResource("Platform/landcover_before_rail.geojson").getPath(),
+                 "inputSRID": 2154,
+                 "tableName": "LANDCOVER"])
+
+        new Enrich_Landcover_with_rail().exec(connection,
+                ["inputLandcover" : "LANDCOVER",
+                 "inputRail" : "RAIL",
+                 "outputSuffixe":"AFTER_RAIL"
+                ])
+
+    }
+
+
 }

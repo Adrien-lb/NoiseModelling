@@ -523,10 +523,10 @@ public class TableLoaderTest {
 
         // Verify SNCF properties
         assertNotNull(sncfPlatform, "SNCF must not be null");
-        assertEquals(1.0, sncfPlatform.d1, 0.001, "SNCF d1 incorrect");
-        assertEquals(3.0, sncfPlatform.d2_0, 0.001, "SNCF d2_0 incorrect");
-        assertEquals(4.0, sncfPlatform.d3_0, 0.001, "SNCF d3_0 incorrect");
-        assertEquals(8.0, sncfPlatform.d4_0, 0.001, "SNCF d4_0 incorrect");
+        assertEquals(1.8, sncfPlatform.d1, 0.001, "SNCF d1 incorrect");
+        assertEquals(3.3, sncfPlatform.d2_0, 0.001, "SNCF d2_0 incorrect");
+        assertEquals(4.8, sncfPlatform.d3_0, 0.001, "SNCF d3_0 incorrect");
+        assertEquals(8.3, sncfPlatform.d4_0, 0.001, "SNCF d4_0 incorrect");
         assertEquals(0.0, sncfPlatform.g1, 0.001, "SNCF g1 incorrect");
         assertEquals(1.0, sncfPlatform.g2, 0.001, "SNCF g2 incorrect");
         assertEquals(0.0, sncfPlatform.g3, 0.001, "SNCF g3 incorrect");

@@ -29,7 +29,10 @@ import org.h2gis.utilities.JDBCUtilities
 import org.h2gis.utilities.GeometryTableUtilities
 import org.h2gis.utilities.TableLocation
 import org.h2gis.utilities.wrapper.ConnectionWrapper
-import org.noise_planet.noisemodelling.pathfinder.utils.profiler.RootProgressVisitor;
+import org.noise_planet.noisemodelling.jdbc.railway.RailwayPlatform;
+import org.noise_planet.noisemodelling.jdbc.railway.RailWayLWIterator
+import org.noise_planet.noisemodelling.pathfinder.utils.profiler.RootProgressVisitor
+import org.noise_planet.noisemodelling.scripts.Import_and_Export.Export_Table;
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -55,9 +58,9 @@ description = '&#10145;&#65039; Insert rail ground surfaces into the input LANDC
               '<hr>' +
               'In the schema below, orange points will be inserted into the DEM. d2, d3 and d4 are deduced from the information provided in the parameter <b>railWidth</b>, using the following formula:' +
               '<ul>' +
-                '<li>d2 = (railWidth - 5.5)/2</li>' +
-                '<li>d3 = (railWidth - 4)/2</li>' +
-                '<li>d4 = (railWidth)/2</li>' +
+                '<li>d2 = d2_0+(nTrack-1)*trackSpacing</li>' +
+                '<li>d3 = d3_0+(nTrack-1)*trackSpacing/li>' +
+                '<li>d4 = d4_0+(nTrack-1)*trackSpacing</li>' +
               '</ul>' +
               '<img src="wps_images/railway_plateform.png" alt="Railways platform" width="95%" align="center">'
 
@@ -76,22 +79,10 @@ inputs = [
                 description: 'Name of the input landcover table',
                 type       : String.class
         ],
-        gColumn : [
-                name       : 'G column',
-                title      : 'G column',
-                description: 'Ground absorption coeffecient (G) column name',
-                type       : String.class
-        ],
         inputRail : [
                 name       : 'Input Railways',
                 title      : 'Input railways table',
                 description: 'Name of the input railways table',
-                type       : String.class
-        ],
-        railWidth : [
-                name       : 'Railways width',
-                title      : 'Railways width',
-                description: 'Name of column where the railways width is stored',
                 type       : String.class
         ],
         outputSuffixe : [
@@ -149,13 +140,6 @@ static def parseScript(String sqlInstructions, Sql sql, ProgressVisitor progress
     }
 }
 
-
-
-
-
-
-
-
 def exec(Connection connection, input) {
 
 
@@ -206,12 +190,12 @@ def exec(Connection connection, input) {
     ProgressVisitor progress = progressVisitor.subProcess(2)
 
     // Get provided parameters
-    
+
     String inputLandcover = input["inputLandcover"]
-    String gColumn = input["gColumn"]
+//    String gColumn = "G"
     String inputRail = input["inputRail"]
-    String railWidth = input["railWidth"]
-    
+
+
 
     // If no SRID provided, the one from DEM layer is applied
     Integer srid = 0
@@ -234,9 +218,8 @@ def exec(Connection connection, input) {
     logger.info('--------------------------------------------')
     logger.info('# SRID: ' + srid)
     logger.info('# Landcover table: ' + inputLandcover)
-    logger.info('# Landcover G column: ' + gColumn)
+//    logger.info('# Landcover G column: ' )
     logger.info('# Railways network table: ' + inputRail)
-    logger.info('# Railways width column: ' + railWidth)
     logger.info('# Output suffixe: ' + outputSuffixe)
     logger.info('--------------------------------------------')
 
@@ -244,44 +227,87 @@ def exec(Connection connection, input) {
 
     def sql = new Sql(connection)
 
+    def initRail = """
+    -- Import railways from the input table
+    DROP TABLE IF EXISTS RAIL;
+    CREATE TABLE RAIL AS SELECT
+        PK_LINE, IDSECTION, nTrack, speedTrack, trackTrans, railRoughn,
+        impactNois, curvature, bridgeTran, speedComme, isTunnel, platform,
+        ST_SETSRID(THE_GEOM, $srid) AS THE_GEOM
+    FROM $inputRail;
+    CREATE SPATIAL INDEX ON RAIL(THE_GEOM);
+    """
+
+    // ---------------------------------------------------------
+    // Get the platform value from the input railways table
+    def platform_use
+    String railTable = TableLocation.parse(inputRail).toString()   // ex: "TESTTRAINNETWORK"
+    String query = "SELECT DISTINCT TRIM(UPPER(PLATFORM)) AS PLATFORM FROM " + railTable + " WHERE PLATFORM IS NOT NULL"
+    def rows = sql.rows(query)
+
+    if (rows.isEmpty()) {
+        logger.warn("No platform value found in table " + inputRail + ". A default platform will be used.")
+        platform_use = null
+    } else {
+        platform_use = rows.get(0).get("PLATFORM")
+        if (rows.size() > 1) {
+            logger.warn("Multiple platform values found in table " + inputRail +
+                    " (" + rows.collect { it.get("PLATFORM") }.join(", ") + "). " +
+                    "Only the first one (" + platform_use + ") is used.")
+        }
+    }
+
+    // Load available platforms and get the corresponding one
+    Map<String, RailwayPlatform> platforms = RailwayPlatform.loadFromJSON(RailWayLWIterator.RAILWAY_PLATFORMS_JSON);
+    RailwayPlatform platform = platforms.get(platform_use);
+
+    if (platform == null) {
+        throw new IllegalArgumentException("Unknown railway platform: '" + platform_use +
+                "'. Available platforms are: " + platforms.keySet().join(", "))
+    }
+
+    logger.info('# Railway platform used: ' + platform_use)
+
+
 
     def initPlatform = """
     -- Initialize the rail platform table
-
     DROP TABLE IF EXISTS PLATEFORM;
-    CREATE TABLE PLATEFORM (idPlatform varchar Primary Key, d1 float, g1 float, g2 float, g3 float, h1 float, h2 float);
-
-    INSERT INTO PLATEFORM VALUES ('SNCF', 1.435, 0, 1, 1, 0.5, 0.18);
-
-    -- Rail platform: layer PLATEFORM imported
+    CREATE TABLE PLATEFORM (idPlatform varchar Primary Key, d1 float, d2_0 float, d3_0 float, d4_0 float, g1 float, g2 float, g3 float, h1 float, h2 float, trackspacing float);
+    
+    INSERT INTO PLATEFORM VALUES ('$inputLandcover', ${platform.d1}, ${platform.d2_0}, ${platform.d3_0}, ${platform.d4_0}, ${platform.g1}, ${platform.g2}, ${platform.g3}, ${platform.h1}, ${platform.h2}, ${platform.trackspacing});
     """
 
 
     def import_landcover = """
     ------------
     -- Import Landcover
-    -- Only geometries where $gColumn is higher than 0 are kept
+    -- Only geometries where G is higher than 0 are kept
 
     DROP TABLE IF EXISTS landcover_to_enrich;
-    CREATE TABLE landcover_to_enrich AS SELECT THE_GEOM, $gColumn FROM $inputLandcover WHERE $gColumn>0;
+    CREATE TABLE landcover_to_enrich AS SELECT THE_GEOM, G FROM $inputLandcover WHERE G>0;
     CREATE SPATIAL INDEX ON landcover_to_enrich(the_geom);
 
     -- Landcover: layer $inputLandcover imported
     """
 
+
     def import_rail = """
     ------------
-    -- Import railways (that are on the floor --> POS_SOL=0)
-
-    DROP TABLE IF EXISTS landcover_rail;    
-    CREATE TABLE landcover_rail AS SELECT a.THE_GEOM, a.$railWidth - 5.5 as d2, a.$railWidth - 4 as d3, a.$railWidth as d4, 
-        p.idplatform, p.d1, p.g1, p.g2, p.g3
-        FROM $inputRail a, PLATEFORM p 
-        WHERE st_zmin(a.THE_GEOM) > 0 AND p.idplatform ='SNCF';
-
+    -- Join rail geometries with platform parameters
+    DROP TABLE IF EXISTS landcover_rail;
+    CREATE TABLE landcover_rail AS SELECT
+        r.THE_GEOM,
+        p.d2_0 + (r.nTrack - 1) * p.trackspacing AS d2,
+        p.d3_0 + (r.nTrack - 1) * p.trackspacing AS d3,
+        p.d4_0 + (r.nTrack - 1) * p.trackspacing AS d4,
+        p.idPlatform, p.d1, p.g1, p.g2, p.g3, p.h1, p.h2
+    FROM PLATEFORM p, RAIL r;
+    
     CREATE SPATIAL INDEX ON landcover_rail(THE_GEOM);
-    ALTER TABLE landcover_rail ADD PK_LINE INT AUTO_INCREMENT NOT NULL;
-    ALTER TABLE landcover_rail add primary key(PK_LINE);
+    
+    ALTER TABLE landcover_rail ADD COLUMN PK_LINE INT AUTO_INCREMENT NOT NULL;
+    ALTER TABLE landcover_rail ADD PRIMARY KEY (PK_LINE);
     
     -- Railways: layer $inputRail imported
     """
@@ -295,36 +321,33 @@ def exec(Connection connection, input) {
     CREATE TABLE rail_buff_d4 AS SELECT ST_UNION(ST_ACCUM(ST_BUFFER(the_geom, d4/2))) as the_geom FROM landcover_rail;
 
     DROP TABLE IF EXISTS rail_diff_d3_d1, rail_diff_d4_d3;
-    CREATE TABLE rail_diff_d3_d1 as select ST_SymDifference(a.the_geom, b.the_geom) as the_geom from rail_buff_d3 a, rail_buff_d1 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
-    CREATE TABLE rail_diff_d4_d3 as select ST_SymDifference(a.the_geom, b.the_geom) as the_geom from rail_buff_d4 a, rail_buff_d3 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
-    
-    DROP TABLE IF EXISTS rail_buff_d1_expl, rail_buff_d3_expl, rail_buff_d4_expl;
-    CREATE TABLE rail_buff_d1_expl AS SELECT a.the_geom, b.g3 as g FROM ST_Explode('RAIL_BUFF_D1') a, PLATEFORM  b WHERE b.IDPLATFORM ='SNCF';
-    CREATE TABLE rail_buff_d3_expl AS SELECT a.the_geom, b.g2 as g FROM ST_Explode('RAIL_DIFF_D3_D1 ') a, PLATEFORM  b WHERE b.IDPLATFORM ='SNCF';
-    CREATE TABLE rail_buff_d4_expl AS SELECT a.the_geom, b.g1 as g FROM ST_Explode('RAIL_DIFF_D4_D3 ') a, PLATEFORM  b WHERE b.IDPLATFORM ='SNCF';
+    CREATE TABLE rail_diff_d3_d1 AS SELECT ST_SymDifference(a.the_geom, b.the_geom) as the_geom FROM rail_buff_d3 a, rail_buff_d1 b WHERE a.the_geom && b.the_geom AND st_intersects(a.the_geom, b.the_geom);
+    CREATE TABLE rail_diff_d4_d3 AS SELECT ST_SymDifference(a.the_geom, b.the_geom) as the_geom FROM rail_buff_d4 a, rail_buff_d3 b WHERE a.the_geom && b.the_geom AND st_intersects(a.the_geom, b.the_geom);
 
-    DROP TABLE IF EXISTS LANDCOVER_G_0, LANDCOVER_G_03, LANDCOVER_G_07, LANDCOVER_G_1;
-    CREATE TABLE LANDCOVER_G_0 AS SELECT ST_Union(ST_Accum(the_geom)) as the_geom FROM landcover_to_enrich WHERE g=0;
+    DROP TABLE IF EXISTS rail_buff_d1_expl, rail_buff_d3_expl, rail_buff_d4_expl;
+    CREATE TABLE rail_buff_d1_expl AS SELECT a.the_geom, b.g3 as g FROM ST_Explode('RAIL_BUFF_D1') a, PLATEFORM b;
+    CREATE TABLE rail_buff_d3_expl AS SELECT a.the_geom, b.g2 as g FROM ST_Explode('RAIL_DIFF_D3_D1') a, PLATEFORM b;
+    CREATE TABLE rail_buff_d4_expl AS SELECT a.the_geom, b.g1 as g FROM ST_Explode('RAIL_DIFF_D4_D3') a, PLATEFORM b;
+
+    DROP TABLE IF EXISTS LANDCOVER_G_03, LANDCOVER_G_07, LANDCOVER_G_1;
     CREATE TABLE LANDCOVER_G_03 AS SELECT ST_Union(ST_Accum(the_geom)) as the_geom FROM landcover_to_enrich WHERE g=0.3;
     CREATE TABLE LANDCOVER_G_07 AS SELECT ST_Union(ST_Accum(the_geom)) as the_geom FROM landcover_to_enrich WHERE g=0.7;
     CREATE TABLE LANDCOVER_G_1 AS SELECT ST_Union(ST_Accum(the_geom)) as the_geom FROM landcover_to_enrich WHERE g=1;
 
-    DROP TABLE IF EXISTS LANDCOVER_0_DIFF_D4, LANDCOVER_03_DIFF_D4, LANDCOVER_07_DIFF_D4, LANDCOVER_1_DIFF_D4;
-    CREATE TABLE LANDCOVER_0_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom from rail_buff_d4 a, LANDCOVER_G_0 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
-    CREATE TABLE LANDCOVER_03_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom from rail_buff_d4 a, LANDCOVER_G_03 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
-    CREATE TABLE LANDCOVER_07_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom from rail_buff_d4 a, LANDCOVER_G_07 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
-    CREATE TABLE LANDCOVER_1_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom from rail_buff_d4 a, LANDCOVER_G_1 b where a.the_geom && b.the_geom and st_intersects(a.the_geom, b.the_geom);
+    DROP TABLE IF EXISTS LANDCOVER_03_DIFF_D4, LANDCOVER_07_DIFF_D4, LANDCOVER_1_DIFF_D4;
+    CREATE TABLE LANDCOVER_03_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom FROM rail_buff_d4 a, LANDCOVER_G_03 b WHERE a.the_geom && b.the_geom AND st_intersects(a.the_geom, b.the_geom);
+    CREATE TABLE LANDCOVER_07_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom FROM rail_buff_d4 a, LANDCOVER_G_07 b WHERE a.the_geom && b.the_geom AND st_intersects(a.the_geom, b.the_geom);
+    CREATE TABLE LANDCOVER_1_DIFF_D4 AS SELECT ST_Difference(b.the_geom, a.the_geom) as the_geom FROM rail_buff_d4 a, LANDCOVER_G_1 b WHERE a.the_geom && b.the_geom AND st_intersects(a.the_geom, b.the_geom);
 
-    DROP TABLE IF EXISTS LANDCOVER_0_EXPL, LANDCOVER_03_EXPL, LANDCOVER_07_EXPL, LANDCOVER_1_EXPL;
-    CREATE TABLE LANDCOVER_0_EXPL AS SELECT the_geom, 0 as g FROM ST_Explode('LANDCOVER_0_DIFF_D4 ');
-    CREATE TABLE LANDCOVER_03_EXPL AS SELECT the_geom, 0.3 as g FROM ST_Explode('LANDCOVER_03_DIFF_D4 ');
-    CREATE TABLE LANDCOVER_07_EXPL AS SELECT the_geom, 0.7 as g FROM ST_Explode('LANDCOVER_07_DIFF_D4 ');
-    CREATE TABLE LANDCOVER_1_EXPL AS SELECT the_geom, 1 as g FROM ST_Explode('LANDCOVER_1_DIFF_D4 ');
+    DROP TABLE IF EXISTS LANDCOVER_03_EXPL, LANDCOVER_07_EXPL, LANDCOVER_1_EXPL;
+    CREATE TABLE LANDCOVER_03_EXPL AS SELECT the_geom, 0.3 as g FROM ST_Explode('LANDCOVER_03_DIFF_D4');
+    CREATE TABLE LANDCOVER_07_EXPL AS SELECT the_geom, 0.7 as g FROM ST_Explode('LANDCOVER_07_DIFF_D4');
+    CREATE TABLE LANDCOVER_1_EXPL AS SELECT the_geom, 1 as g FROM ST_Explode('LANDCOVER_1_DIFF_D4');
 
-    -- Unifiy tables
+    -- Unify tables
     DROP TABLE IF EXISTS LANDCOVER_UNION, LANDCOVER_MERGE;
-    CREATE TABLE LANDCOVER_UNION AS SELECT * FROM LANDCOVER_0_EXPL UNION SELECT * FROM LANDCOVER_03_EXPL UNION SELECT * FROM LANDCOVER_07_EXPL 
-    UNION SELECT * FROM LANDCOVER_1_EXPL UNION SELECT * FROM RAIL_BUFF_D1_EXPL UNION SELECT * FROM RAIL_BUFF_D3_EXPL UNION SELECT * FROM RAIL_BUFF_D4_EXPL ; 
+    CREATE TABLE LANDCOVER_UNION AS SELECT * FROM LANDCOVER_03_EXPL UNION SELECT * FROM LANDCOVER_07_EXPL
+    UNION SELECT * FROM LANDCOVER_1_EXPL UNION SELECT * FROM RAIL_BUFF_D1_EXPL UNION SELECT * FROM RAIL_BUFF_D3_EXPL UNION SELECT * FROM RAIL_BUFF_D4_EXPL;
 
     -- Merge geometries that have the same G
     CREATE TABLE LANDCOVER_MERGE AS SELECT ST_UNION(ST_ACCUM(the_geom)) as the_geom, g FROM LANDCOVER_UNION GROUP BY g;
@@ -333,12 +356,11 @@ def exec(Connection connection, input) {
     CREATE SPATIAL INDEX ON $enrichedLandcover(THE_GEOM);
 
     -- Remove non-needed tables
-    DROP TABLE IF EXISTS rail_buff_d1, rail_buff_d3, rail_buff_d4, rail_diff_d3_d1, rail_diff_d4_d3, rail_buff_d1_expl, 
-    rail_buff_d3_expl, rail_buff_d4_expl, LANDCOVER_G_0, LANDCOVER_G_03, LANDCOVER_G_07, LANDCOVER_G_1, 
-    LANDCOVER_0_DIFF_D4, LANDCOVER_03_DIFF_D4, LANDCOVER_07_DIFF_D4, LANDCOVER_1_DIFF_D4, 
-    LANDCOVER_0_EXPL, LANDCOVER_03_EXPL, LANDCOVER_07_EXPL, LANDCOVER_1_EXPL, 
+    DROP TABLE IF EXISTS rail_buff_d1, rail_buff_d3, rail_buff_d4, rail_diff_d3_d1, rail_diff_d4_d3, rail_buff_d1_expl,
+    rail_buff_d3_expl, rail_buff_d4_expl, LANDCOVER_G_03, LANDCOVER_G_07, LANDCOVER_G_1,
+    LANDCOVER_03_DIFF_D4, LANDCOVER_07_DIFF_D4, LANDCOVER_1_DIFF_D4,
+    LANDCOVER_03_EXPL, LANDCOVER_07_EXPL, LANDCOVER_1_EXPL,
     LANDCOVER_UNION, LANDCOVER_MERGE, landcover_rail, landcover_to_enrich;
-
 
     -- Landcover successfully enriched in the table $enrichedLandcover
     """
@@ -353,7 +375,8 @@ def exec(Connection connection, input) {
     stringBuilder.append(import_rail)
     stringBuilder.append(queries_landcover_rail)
 
-    def binding = ["inputLandcover": inputLandcover, "gColumn": gColumn, "inputRail": inputRail, "railWidth": railWidth, "outputSuffixe": outputSuffixe, "srid": srid]
+    def binding = ["inputLandcover": inputLandcover, "gColumn": "G", "inputRail": inputRail, "railWidth": platform.d1, "outputSuffixe": outputSuffixe, "srid": srid]
+
     def template = engine.createTemplate(stringBuilder.toString()).make(binding)
     parseScript(template.toString(), sql, progress, logger)
 
