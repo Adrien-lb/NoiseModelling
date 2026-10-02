@@ -3,6 +3,6 @@
 "name": "recepteur",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2154" } },
 "features": [
-{ "type": "Feature", "properties": { "PK": 1 }, "geometry": { "type": "Point", "coordinates": [ 500, 10, 1.5 ] } }
+{ "type": "Feature", "properties": { "PK": 1 }, "geometry": { "type": "Point", "coordinates": [ 550, 7.5, 1.2] } }
 ]
 }

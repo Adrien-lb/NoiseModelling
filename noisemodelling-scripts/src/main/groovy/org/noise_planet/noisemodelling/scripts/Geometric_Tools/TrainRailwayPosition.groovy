@@ -229,7 +229,7 @@ def exec(Connection connection, Map input) {
             crs: [
                     type: "name",
                     properties: [
-                            name: "urn:ogc:def:crs:EPSG::32635"
+                            name: "urn:ogc:def:crs:EPSG::2154"
                     ]
             ],
             features: features

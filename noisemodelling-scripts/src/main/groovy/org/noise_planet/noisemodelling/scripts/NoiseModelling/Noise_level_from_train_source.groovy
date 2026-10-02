@@ -69,8 +69,6 @@ description = '&#10145;&#65039; Computes the propagation from the sounds sources
         '<li><b> THE_GEOM </b>: the 3D geometry of the receivers with the Z as the altitude (POINTZ)</li>' +
         '<li><b> Hz50 ,Hz63 ,Hz80 , Hz100 ,Hz125 ,Hz160 , Hz200 ,Hz250 ,Hz315 , Hz400 ,Hz500 ,Hz630 , Hz800 ,Hz1000 ,Hz1250 , Hz1600 ,Hz2000 ,Hz2500 , Hz3150 ,Hz4000 ,Hz5000 , Hz6300 ,Hz8000 ,Hz10000 </b>: 24 columns giving the sound level for each third octave band (FLOAT)</li></ul>'
 
-
-
 inputs = [
         tableBuilding           : [
                 name       : 'Buildings table name',
@@ -531,19 +529,19 @@ def exec(Connection connection, Map input) {
         logger.info(String.format(Locale.ROOT, "Loaded directivity from %s table", tableSourceDirectivity))
     }
 
-    if (input['tableSourceEmission']) {
+    if (input['tableSourcesEmission']) {
         // Use the right default database caps according to db type
-        String tableSourceEmission = TableLocation.capsIdentifier(input['tableSourceEmission'] as String, dbType)
-        pointNoiseMap.setSourcesEmissionTableName(tableSourceEmission)
+        String tableSourcesEmission = TableLocation.capsIdentifier(input['tableSourcesEmission'] as String, dbType)
+        pointNoiseMap.setSourcesEmissionTableName(tableSourcesEmission)
     }
 
 
     if(selectSource=="ALL"){
-        if (input['tableSourceEmission']) {
+        if (input['tableSourcesEmission']) {
             println "Source used : ALL"
             // Use the right default database caps according to db type
-            String tableSourceEmission = TableLocation.capsIdentifier(input['tableSourceEmission'] as String, dbType)
-            pointNoiseMap.setSourcesEmissionTableName(tableSourceEmission)
+            String tableSourcesEmission = TableLocation.capsIdentifier(input['tableSourcesEmission'] as String, dbType)
+            pointNoiseMap.setSourcesEmissionTableName(tableSourcesEmission)
         }
     }else{
         def sourceToId = ["ROLLING": 1,"TRACTIONA": 2,"TRACTIONB": 3,"AERODYNAMICA": 4,"AERODYNAMICB": 5,"BRIDGE": 6]
